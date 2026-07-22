@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#7f2f27" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="豫见五日" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="2026河南5天4晚家庭旅行安排、交通、餐饮和待办打卡。" />
+    <title>豫见五日｜河南家庭旅行打卡</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <link rel="icon" href="./icons/icon-192.png" />
+    <link rel="stylesheet" href="./styles.css?v=1.0.0" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">HENAN FAMILY JOURNEY</p>
+          <h1>豫见五日</h1>
+        </div>
+        <button class="icon-button" id="installHelpButton" type="button" aria-label="查看安装说明">
+          <span aria-hidden="true">＋</span>
+        </button>
+      </header>
+
+      <main id="appMain">
+        <section class="view active" data-view="today" aria-labelledby="todayTitle">
+          <div class="hero-card">
+            <div class="hero-copy">
+              <p class="eyebrow light">2026年7月29日—8月2日</p>
+              <h2 id="todayTitle">成都 → 郑州 → 开封 → 洛阳</h2>
+              <p id="tripPhaseText">正在读取行程状态…</p>
+            </div>
+            <div class="progress-orb" id="overallProgressOrb" style="--progress: 0">
+              <strong id="overallProgressValue">0%</strong>
+              <span>总进度</span>
+            </div>
+          </div>
+
+          <section class="section-block" aria-labelledby="nowHeading">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker" id="todayDateLabel">今日</p>
+                <h3 id="nowHeading">现在最重要</h3>
+              </div>
+              <button class="text-button" id="openCurrentDay" type="button">看完整安排</button>
+            </div>
+            <div id="todayFocusCard" class="focus-card"></div>
+          </section>
+
+          <section class="section-block" aria-labelledby="quickHeading">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">QUICK CHECK</p>
+                <h3 id="quickHeading">出门前快速确认</h3>
+              </div>
+              <span class="count-pill" id="quickCount">0/0</span>
+            </div>
+            <div class="check-list compact" id="quickChecklist"></div>
+          </section>
+
+          <section class="section-block soft-card" aria-labelledby="summaryHeading">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">TODAY AT A GLANCE</p>
+                <h3 id="summaryHeading">今天一眼看懂</h3>
+              </div>
+            </div>
+            <div class="glance-grid" id="todayGlance"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view="prep" aria-labelledby="prepTitle">
+          <div class="page-intro">
+            <p class="eyebrow">BEFORE DEPARTURE</p>
+            <h2 id="prepTitle">出发准备</h2>
+            <p>订票、预约、酒店、用车、行李，一项一项勾完。</p>
+          </div>
+          <div class="sticky-progress">
+            <div>
+              <strong id="prepProgressLabel">0/0</strong>
+              <span>准备完成</span>
+            </div>
+            <div class="progress-track"><span id="prepProgressBar"></span></div>
+          </div>
+          <div id="prepGroups"></div>
+        </section>
+
+        <section class="view" data-view="journey" aria-labelledby="journeyTitle">
+          <div class="page-intro">
+            <p class="eyebrow">DAY BY DAY</p>
+            <h2 id="journeyTitle">五天行程</h2>
+            <p>每天的时间、交通、吃饭、住宿和提醒都在这里。</p>
+          </div>
+          <div class="day-tabs" id="dayTabs" role="tablist" aria-label="选择行程天数"></div>
+          <article id="dayDetail"></article>
+        </section>
+
+        <section class="view" data-view="info" aria-labelledby="infoTitle">
+          <div class="page-intro">
+            <p class="eyebrow">TRIP FILE</p>
+            <h2 id="infoTitle">行程资料</h2>
+            <p>集中查看航班、高铁、住宿、分房和本机私密备注。</p>
+          </div>
+
+          <section class="info-card" aria-labelledby="transportTitle">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">TRANSPORT</p>
+                <h3 id="transportTitle">大交通</h3>
+              </div>
+            </div>
+            <div id="transportCards" class="stack-list"></div>
+          </section>
+
+          <section class="info-card" aria-labelledby="hotelTitle">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">STAY</p>
+                <h3 id="hotelTitle">住宿与分房</h3>
+              </div>
+            </div>
+            <div id="hotelCards" class="stack-list"></div>
+          </section>
+
+          <section class="info-card private-card" aria-labelledby="privateTitle">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">ONLY ON THIS DEVICE</p>
+                <h3 id="privateTitle">本机私密备注</h3>
+              </div>
+              <span class="privacy-pill">不会上传</span>
+            </div>
+            <p class="helper-text">司机电话、订单号等只保存在当前浏览器，不会进入公开网站或GitHub。</p>
+            <label>
+              <span>车辆与司机</span>
+              <textarea data-note-key="driver" rows="3" placeholder="例如：D2司机、车牌、集合点"></textarea>
+            </label>
+            <label>
+              <span>票务与预约</span>
+              <textarea data-note-key="booking" rows="3" placeholder="例如：景区预约编号、检票口"></textarea>
+            </label>
+            <label>
+              <span>紧急联系与其他</span>
+              <textarea data-note-key="emergency" rows="3" placeholder="请只在自己的手机填写"></textarea>
+            </label>
+            <p class="save-status" id="noteSaveStatus" aria-live="polite"></p>
+          </section>
+
+          <section class="info-card" aria-labelledby="dataTitle">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">BACKUP</p>
+                <h3 id="dataTitle">打卡数据</h3>
+              </div>
+            </div>
+            <p class="helper-text">数据只在当前浏览器。换手机或清除浏览器数据前，请先导出备份。</p>
+            <div class="action-grid">
+              <button class="primary-button" id="exportButton" type="button">导出备份</button>
+              <label class="secondary-button file-button">
+                导入备份
+                <input type="file" id="importInput" accept="application/json" hidden />
+              </label>
+            </div>
+            <button class="danger-button" id="resetButton" type="button">清空全部打卡</button>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="主要页面">
+        <button class="nav-button active" data-target="today" type="button">
+          <span class="nav-icon" aria-hidden="true">今</span><span>今日</span>
+        </button>
+        <button class="nav-button" data-target="prep" type="button">
+          <span class="nav-icon" aria-hidden="true">备</span><span>准备</span>
+        </button>
+        <button class="nav-button" data-target="journey" type="button">
+          <span class="nav-icon" aria-hidden="true">程</span><span>行程</span>
+        </button>
+        <button class="nav-button" data-target="info" type="button">
+          <span class="nav-icon" aria-hidden="true">资</span><span>资料</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="modal-backdrop" id="installModal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+        <button class="modal-close" id="closeInstallModal" type="button" aria-label="关闭">×</button>
+        <div class="app-icon-preview">豫</div>
+        <p class="eyebrow">IPHONE INSTALL</p>
+        <h2 id="installTitle">添加到主屏幕</h2>
+        <ol>
+          <li>用 iPhone 的 Safari 打开本页面。</li>
+          <li>点击底部“分享”按钮。</li>
+          <li>向上滑，选择“添加到主屏幕”。</li>
+          <li>点击右上角“添加”。</li>
+        </ol>
+        <p class="helper-text">如果从微信打开，请先选择“在Safari中打开”。</p>
+        <button class="primary-button full" id="installDoneButton" type="button">知道了</button>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./data.js?v=1.0.0"></script>
+    <script src="./app.js?v=1.0.1"></script>
+  </body>
+</html>
