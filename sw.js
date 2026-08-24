@@ -1,11 +1,11 @@
-const CACHE_NAME = "henan-family-trip-v2";
+const CACHE_NAME = "henan-family-trip-v2-nozoom-20260824";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css?v=1.0.0",
   "./data.js?v=1.0.0",
   "./app.js?v=1.0.1",
-  "./manifest.webmanifest",
+  "./manifest.webmanifest?v=nozoom-20260824",
   "./icons/apple-touch-icon.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
